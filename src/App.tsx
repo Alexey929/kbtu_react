@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FC } from 'react'
+import {
+  BrowserRouter as Router, Switch, Route, Redirect,
+} from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { Welcome } from './pages'
+import { Header } from './components'
 
-export default App;
+const routes = [
+  { path: '/welcome', isExact: true, component: Welcome },
+]
+
+const App : FC = () => (
+  <Router>
+    <Header />
+    <Switch>
+      {routes.map(({ isExact, component, path }) => <Route exact={isExact} path={path} component={component} />)}
+      <Redirect to="/welcome" />
+    </Switch>
+  </Router>
+)
+
+export default App
