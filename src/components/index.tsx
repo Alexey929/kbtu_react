@@ -5,3 +5,7 @@ export { default as Header } from './Header/Header'
 export { default as Link } from './Link/Link'
 
 export { default as Text } from './Text/Text'
+
+export { default as Input } from './Input/Input'
+
+export { default as Form } from './Form/Form'

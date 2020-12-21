@@ -3,18 +3,22 @@ import {
   BrowserRouter as Router, Switch, Route, Redirect,
 } from 'react-router-dom'
 
-import { Welcome } from './pages'
-import { Header } from './components'
+import {
+  Welcome, Registration, Login,
+} from './pages'
 
 const routes = [
   { path: '/welcome', isExact: true, component: Welcome },
+  { path: '/registration', isExact: true, component: Registration },
+  { path: '/login', isExact: true, component: Login },
 ]
 
-const App : FC = () => (
+const App: FC = () => (
   <Router>
-    <Header />
     <Switch>
-      {routes.map(({ isExact, component, path }) => <Route exact={isExact} path={path} component={component} />)}
+      {routes.map(({ isExact, component, path }) => (
+        <Route exact={isExact} path={path} component={component} key={path} />
+      ))}
       <Redirect to="/welcome" />
     </Switch>
   </Router>

@@ -7,17 +7,13 @@ export const Container = styled.div`
     padding-top: 100px;
 `
 
-export const WelcomeBlock = styled.div`
-    width: 500px;   
+export const LoginBlock = styled.div`
+    width: 400px;
     padding: 30px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     border-radius: 8px;
     background-color: #FBFBFB;
     border: 1px solid #EFEFEF;
-`
-
-export const WelcomeDescription = styled.div`
-    width: 430px;
 `

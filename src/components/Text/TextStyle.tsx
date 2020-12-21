@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 type Props = {
-  size?: 'sm' | 'md' | 'lg' | 'xl' | 'xxl',
+  size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl',
   type?: 'default' | 'warning' | 'danger' | 'secondary' | 'primary' | 'inverted',
   weight?: 'light' | 'normal' | 'bold',
   nowrap?: boolean,
@@ -14,7 +14,8 @@ const fontSizes = {
   md: '16px',
   lg: '18px',
   xl: '20px',
-  xxl: '40px',
+  '2xl': '25px',
+  '3xl': '30px',
 }
 
 const fontColors = {

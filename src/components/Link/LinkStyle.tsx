@@ -3,6 +3,7 @@ import styled from 'styled-components'
 type Props = {
   size?: 'sm' | 'md' | 'lg',
   nowrap?: boolean,
+  margin?: string,
 }
 
 const fontSizes = {
@@ -15,6 +16,7 @@ const LinkStyle = styled.a<Props>`
     display: inline-block;
     cursor: pointer;
     font-size: ${({ size }) => size && fontSizes[size]};
+    margin: ${({ margin }) => margin ?? '0px'};
     color: #3859ff;
     line-height: 1.25;
     font-weight: 400;

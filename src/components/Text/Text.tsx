@@ -4,7 +4,7 @@ import TextStyle from './TextStyle'
 
 type Props = {
   children?: string | number | Element | ReactNode,
-  size?: 'sm' | 'md' | 'lg' | 'xl' | 'xxl',
+  size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl',
   weight?: 'light' | 'normal' | 'bold',
   type?: 'default' | 'warning' | 'danger' | 'secondary' | 'primary' | 'inverted',
   nowrap?: boolean,
