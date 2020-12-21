@@ -4,7 +4,7 @@ import { Container } from './ProfileStyle'
 
 const Profile: FC = () => (
   <Container>
-    Somethingwedew
+    Somethingwedewded
   </Container>
 )
 
