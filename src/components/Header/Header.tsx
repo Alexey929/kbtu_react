@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useLocation, useHistory } from 'react-router-dom'
 
 import { Button, Text } from '..'
 
@@ -8,12 +8,20 @@ import {
 } from './HeaderStyle'
 
 const Header: FC = () => {
+  const { pathname } = useLocation()
   const history = useHistory()
-  const [active, setActive] = useState(history.location.pathname)
+  const [active, setActive] = useState(pathname)
 
   useEffect(() => {
-    history.push(active)
-  }, [active, history])
+    if (pathname !== active) {
+      setActive('')
+    }
+  }, [active, history, pathname])
+
+  const handleRoutesMove = (path : string) => {
+    history.push(path)
+    setActive(path)
+  }
 
   return (
     <HeaderStyle>
@@ -22,10 +30,10 @@ const Header: FC = () => {
           KBTU Stories
         </Text>
         <HeaderLinks>
-          <HeaderLink active={active === '/publications'} onClick={() => setActive('/publications')}>
+          <HeaderLink active={active === '/publications'} onClick={() => handleRoutesMove('/publications')}>
             Publications
           </HeaderLink>
-          <HeaderLink active={active === '/profile'} onClick={() => setActive('/profile')}>
+          <HeaderLink active={active === '/profile'} onClick={() => handleRoutesMove('/profile')}>
             Profile
           </HeaderLink>
         </HeaderLinks>

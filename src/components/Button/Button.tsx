@@ -7,14 +7,15 @@ type Props = {
   size?: 'md' | 'lg',
   type?: 'default' | 'primary',
   block?: boolean,
+  outlined?: boolean,
   margin?: string,
   onClick?: () => void
 }
 
 const Button: FC<Props> = ({
-  children, type, size, block, margin, onClick,
+  children, type, size, block, margin, onClick, outlined,
 } : Props) => (
-  <ButtonStyle margin={margin} color={type} block={block} size={size} onClick={onClick}>
+  <ButtonStyle outlined={outlined} margin={margin} color={type} block={block} size={size} onClick={onClick}>
     {children}
   </ButtonStyle>
 )
@@ -25,6 +26,7 @@ Button.defaultProps = {
   block: false,
   type: 'default',
   margin: '0px',
+  outlined: false,
   onClick: () => {},
 }
 

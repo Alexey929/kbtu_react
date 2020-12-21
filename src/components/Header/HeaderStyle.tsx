@@ -15,6 +15,7 @@ export const HeaderStyle = styled.div`
     position: sticky;
     top: 0px;
     left: 0px;
+    border-bottom: 1px solid #EDEDED;
 `
 
 export const HeaderMain = styled.div`

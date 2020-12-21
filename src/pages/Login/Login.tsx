@@ -42,7 +42,7 @@ const Login: FC = () => {
               <Input
                 errorText={displayFieldErrorText(touched.email, errors.email)}
                 width="370px"
-                margin="15px 0"
+                margin="10px 0"
                 onChange={handleChange}
                 htmlType="text"
                 name="email"
@@ -53,7 +53,7 @@ const Login: FC = () => {
               <Input
                 errorText={displayFieldErrorText(touched.password, errors.password)}
                 width="370px"
-                margin="15px 0 30px"
+                margin="10px 0 33px"
                 onChange={handleChange}
                 name="password"
                 value={values.password}
@@ -65,7 +65,7 @@ const Login: FC = () => {
             </Form>
           )}
         </Formik>
-        <Link onClick={() => history.push('/registration')} margin="20px 0 0">Don&apos;t have an account?</Link>
+        <Link onClick={() => history.push('/registration')} margin="25px 0 0">Don&apos;t have an account?</Link>
       </LoginBlock>
     </Container>
   )

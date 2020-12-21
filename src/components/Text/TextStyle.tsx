@@ -29,7 +29,7 @@ const fontColors = {
 
 const fontWeights = {
   normal: 400,
-  bold: 600,
+  bold: 700,
   light: 300,
 }
 

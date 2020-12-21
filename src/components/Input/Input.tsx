@@ -16,13 +16,14 @@ type Props = {
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void,
   onClear?: () => void,
   errorText?: string
+  withoutErrors?: boolean,
 }
 
 const Input: FC<Props> = ({
-  htmlType, name, value, placeholder, margin, width, label, onChange, errorText, padding,
+  htmlType, name, value, placeholder, margin, width, label, onChange, errorText, padding, withoutErrors,
 }: Props) => (
   <InputContainer padding={padding} margin={margin} width={width}>
-    <InputLabel>{label}</InputLabel>
+    {label && <InputLabel>{label}</InputLabel>}
     <InputStyle
       name={name}
       value={value}
@@ -31,7 +32,7 @@ const Input: FC<Props> = ({
       errorText={errorText}
       onChange={onChange}
     />
-    <InputError>{errorText}</InputError>
+    {!withoutErrors && <InputError>{errorText}</InputError>}
   </InputContainer>
 )
 
@@ -46,6 +47,7 @@ Input.defaultProps = {
   onChange: () => {},
   onClear: () => {},
   errorText: '',
+  withoutErrors: false,
 }
 
 export default Input

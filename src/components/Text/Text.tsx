@@ -23,7 +23,7 @@ const Text: FC<Props> = ({
 Text.defaultProps = {
   children: null,
   size: 'md',
-  margin: '5px',
+  margin: '0px',
   weight: 'normal',
   type: 'default',
   nowrap: false,

@@ -5,6 +5,7 @@ type Props = {
   size?: 'md' | 'lg',
   block?: boolean,
   margin?: string,
+  outlined?: boolean,
 }
 
 const buttonColors = {
@@ -40,6 +41,13 @@ const ButtonStyle = styled.button<Props>`
   background-color: ${({ color }) => color && buttonColors[color]};
   color: ${({ color }) => color && buttonFontColors[color]};
   transition: all 0.2s ease-in-out;
+
+
+  ${({ outlined, color }) => outlined && `
+    color: ${color && buttonColors[color]};
+    border: 1px solid ${color && buttonColors[color]};
+    background-color: transparent;
+  `}
 
   &:hover {
     opacity: 0.8;
