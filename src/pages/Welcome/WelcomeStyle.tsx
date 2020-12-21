@@ -17,3 +17,7 @@ export const WelcomeBlock = styled.div`
     background-color: #FBFBFB;
     border: 1px solid #EFEFEF;
 `
+
+export const WelcomeDescription = styled.div`
+    width: 430px;
+`
