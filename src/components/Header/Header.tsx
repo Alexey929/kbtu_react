@@ -38,9 +38,12 @@ const Header: FC = () => {
           </HeaderLink>
         </HeaderLinks>
       </HeaderMain>
-      <Button type="primary">
-        Write story
-      </Button>
+      {pathname !== '/write-story'
+        && (
+        <Button type="primary">
+          Write story
+        </Button>
+        )}
     </HeaderStyle>
 
   )

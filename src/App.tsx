@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom'
 
 import {
-  Welcome, Registration, Login, Publications, Publication, Profile,
+  Welcome, Registration, Login, Publications, Publication, Profile, WriteStory,
 } from './pages'
 import { Header } from './components'
 
@@ -15,6 +15,8 @@ const routes = [
   { path: '/publications', isExact: true, component: Publications },
   { path: '/profile', isExact: true, component: Profile },
   { path: '/publication/:id', isExact: true, component: Publication },
+  { path: '/write-story', isExact: true, component: WriteStory },
+
 ]
 
 const routesWithoutHeader = ['/login', '/registration', '/welcome']

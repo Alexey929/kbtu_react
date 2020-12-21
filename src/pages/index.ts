@@ -9,3 +9,5 @@ export { default as Publications } from './Publications/Publications'
 export { default as Publication } from './Publication/Publication'
 
 export { default as Profile } from './Profile/Profile'
+
+export { default as WriteStory } from './WriteStory/WriteStory'
