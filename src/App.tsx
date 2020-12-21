@@ -19,6 +19,7 @@ const App: FC = () => (
       {routes.map(({ isExact, component, path }) => (
         <Route exact={isExact} path={path} component={component} key={path} />
       ))}
+
       <Redirect to="/welcome" />
     </Switch>
   </Router>
