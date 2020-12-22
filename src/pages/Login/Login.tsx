@@ -1,7 +1,9 @@
 import React, { FC } from 'react'
 import { Formik, Form } from 'formik'
 import { useHistory } from 'react-router-dom'
+import { observer } from 'mobx-react-lite'
 
+import UserModel from '../../models/UserModel'
 import {
   Link, Input, Text, Button,
 } from '../../components'
@@ -26,6 +28,12 @@ const Login: FC = () => {
     return ''
   }
 
+  const onSubmit = ({ email, password } : FormValues) => {
+    if (UserModel.login(email, password)) {
+      history.push('/publications')
+    }
+  }
+
   return (
     <Container>
       <LoginBlock>
@@ -33,7 +41,7 @@ const Login: FC = () => {
         <Formik
           validationSchema={loginValidation}
           initialValues={initialValues}
-          onSubmit={(values) => console.log(values)}
+          onSubmit={values => onSubmit(values)}
         >
           {({
             values, touched, errors, handleChange,
@@ -71,4 +79,4 @@ const Login: FC = () => {
   )
 }
 
-export default Login
+export default observer(Login)

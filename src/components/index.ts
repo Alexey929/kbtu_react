@@ -19,3 +19,5 @@ export { default as Comment } from './Comment/Comment'
 export { default as Comments } from './Comments/Comments'
 
 export { default as Textarea } from './Textarea/Textarea'
+
+export { default as StatisticCard } from './StatisticCard/StatisticCard'

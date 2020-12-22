@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 type Props = {
   size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl',
-  type?: 'default' | 'warning' | 'danger' | 'secondary' | 'primary' | 'inverted',
+  type?: 'default' | 'warning' | 'danger' | 'secondary' | 'primary' | 'inverted' | 'success',
   weight?: 'light' | 'normal' | 'bold',
   nowrap?: boolean,
   underlined?: boolean,
@@ -25,6 +25,7 @@ const fontColors = {
   secondary: '#858585',
   primary: '#3859ff',
   inverted: '#fff',
+  success: '#00C34E',
 }
 
 const fontWeights = {

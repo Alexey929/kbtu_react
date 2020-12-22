@@ -6,6 +6,7 @@ import {
   Link, Input, Text, Button,
 } from '../../components'
 import { registrationValidation } from '../../validation'
+import UserModel from '../../models/UserModel'
 
 import { Container, RegistrationBlock } from './RegistrationStyle'
 
@@ -27,6 +28,12 @@ const Registration: FC = () => {
     return ''
   }
 
+  const onSumbit = ({ nickname, email, password }: FormValues) => {
+    UserModel.registrate(nickname, email, password)
+
+    history.push('/publications')
+  }
+
   return (
     <Container>
       <RegistrationBlock>
@@ -34,7 +41,7 @@ const Registration: FC = () => {
         <Formik
           validationSchema={registrationValidation}
           initialValues={initialValues}
-          onSubmit={(values) => console.log(values)}
+          onSubmit={(values) => onSumbit(values)}
         >
           {({
             values, handleChange, touched, errors,
