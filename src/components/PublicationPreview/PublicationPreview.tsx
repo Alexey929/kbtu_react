@@ -76,11 +76,12 @@ const PublicationPreview: FC<Props> = ({ publication } : Props) => {
           {publication.comments?.length !== 0
             && (
             <Icon
+              pointer
               icon={<MdComment />}
               text={publication.comments?.length}
               iconColor="#808080"
               iconSize="20px"
-              onClick={() => history.push(`/publication/${publication.id}?toComments=true`)}
+              onClick={() => history.push(`/publication/${publication.id}?=toComments`)}
               fontColor="#808080"
               margin="0 13px 0 0"
             />

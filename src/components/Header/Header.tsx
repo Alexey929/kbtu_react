@@ -40,7 +40,7 @@ const Header: FC = () => {
       </HeaderMain>
       {pathname !== '/write-story'
         && (
-        <Button type="primary">
+        <Button type="primary" onClick={() => history.push('/write-story')}>
           Write story
         </Button>
         )}

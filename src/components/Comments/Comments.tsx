@@ -3,31 +3,33 @@ import React, { FC } from 'react'
 import {
   Comment, Textarea, Button, Text,
 } from '..'
+import { CommentInterface } from '../../interfaces/Publications'
 
 import { Container, List, SendComment } from './CommentsStyle'
 
-const comment = {
-  author: {
-    nickname: 'Deffestor',
-    id: '1',
-  },
-  date: '20.10.2020',
-  text: 'Офигенно! Мне понравилось!',
-  rating: {
-    likes: '25',
-    dislikes: '3',
-  },
+type Props = {
+  comments: CommentInterface[] | undefined,
+  ref: any,
 }
 
-const Comments: FC = () => (
-  <Container>
-    <Text size="lg" weight="bold">Comments (25):</Text>
-    <List>
-      <Comment comment={comment} />
-      <Comment comment={comment} />
-      <Comment comment={comment} />
-      <Comment comment={comment} />
-    </List>
+const Comments: FC<Props> = ({ comments, ref }: Props) => (
+  <Container ref={ref}>
+    {comments && comments.length > 0
+      ? (
+        <>
+          <Text size="lg" weight="bold">
+            Comments (
+            {comments.length}
+            ):
+          </Text>
+          <List>
+            {comments.map(comment => <Comment comment={comment} />)}
+          </List>
+        </>
+      )
+      : (
+        <Text margin="0 0 30px" type="secondary" size="lg">There are no comments on this post yet.</Text>
+      )}
     <Text size="lg" weight="bold">Your comment</Text>
     <SendComment>
       <Textarea

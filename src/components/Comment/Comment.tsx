@@ -2,24 +2,14 @@ import React, { FC } from 'react'
 import { MdArrowUpward, MdArrowDownward } from 'react-icons/md'
 
 import { Link, Text, Icon } from '..'
+import { CommentInterface } from '../../interfaces/Publications'
 
 import {
   Container, Title, MainText, Actions,
 } from './CommentStyle'
 
 type Props = {
-  comment: {
-    author: {
-      nickname: string,
-      id: string
-    },
-    date: string,
-    text: string,
-    rating: {
-      likes: string,
-      dislikes: string,
-    }
-  }
+  comment: CommentInterface
 }
 
 const Comment: FC<Props> = ({ comment } : Props) => (

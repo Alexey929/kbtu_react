@@ -14,14 +14,6 @@ export const Title = styled.div`
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
-
-    &:hover {
-        > div:first-child {
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
-            opacity: 0.8;
-        }
-    }
 `
 
 export const Actions = styled.div`
