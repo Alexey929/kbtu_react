@@ -4,8 +4,6 @@ import { makeAutoObservable } from 'mobx'
 import { PublicationInterface } from '../interfaces/Publications'
 
 class PublicationsModel {
-  oldPublications = this.publications
-
   publications: PublicationInterface[] = [
     {
       id: 1,
@@ -112,6 +110,7 @@ class PublicationsModel {
   search(searchText: string) {
     console.log(searchText)
     const formattedSearchText = searchText.toLowerCase()
+    const oldPublications = this.publications
 
     this.publications = this.publications.filter(publication => {
       if (publication.title.toLowerCase().indexOf(formattedSearchText) > -1) {

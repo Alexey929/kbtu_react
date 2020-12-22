@@ -1,5 +1,5 @@
 import React, {
-  FC, useState, useCallback, useEffect,
+  FC, useState, useCallback, useEffect, useLayoutEffect,
 } from 'react'
 import { observer } from 'mobx-react-lite'
 
@@ -8,20 +8,39 @@ import PublicationsModel from '../../models/PublicationsModel'
 
 import { Container, FilterLink, FilterLinks } from './PublicationsFilterStyle'
 
-type Props = {
-  onSearch: any,
-}
-
-const PublicationsFilter: FC<Props> = ({ onSearch }: Props) => {
+const PublicationsFilter: FC = () => {
   const [activeSort, setActiveSort] = useState('best')
+  const [searchText, setSearchText] = useState('')
+  const [publications, setPublications] = useState(PublicationsModel.publications)
 
   const changeSort = useCallback(() => {
     PublicationsModel.changeSortType(activeSort)
   }, [activeSort])
 
+  useLayoutEffect(() => {
+    setPublications(PublicationsModel.publications)
+  }, [])
+
   useEffect(() => {
     changeSort()
   }, [changeSort])
+
+  const onSearch = (value: string) => {
+    setSearchText(value)
+    const formattedSearchText = searchText.toLowerCase()
+
+    PublicationsModel.publications = PublicationsModel.publications.filter(publication => {
+      if (publication.title.toLowerCase().indexOf(formattedSearchText) > -1) {
+        return publication
+      }
+
+      return null
+    })
+
+    if (searchText === '') {
+      PublicationsModel.publications = publications
+    }
+  }
 
   return (
     <Container>
