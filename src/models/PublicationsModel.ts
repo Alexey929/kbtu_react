@@ -3,6 +3,8 @@ import { makeAutoObservable } from 'mobx'
 
 import { PublicationInterface } from '../interfaces/Publications'
 
+import UserModel from './UserModel'
+
 class PublicationsModel {
   publications: PublicationInterface[] = [
     {
@@ -94,7 +96,7 @@ class PublicationsModel {
           nickname: 'Rahat Aubakirov',
         },
         date: '12.04.2019',
-        text: 'Класс! Теперь могу работать на React Native :DDD',
+        text: 'Класс, ты гений! Теперь могу работать на React Native :DDD',
         rating: {
           likes: '1',
           dislikes: '0',
@@ -105,6 +107,30 @@ class PublicationsModel {
 
   constructor() {
     makeAutoObservable(this)
+  }
+
+  create(title: string, previewText: string, mainText: string) {
+    const publications = [...this.publications]
+
+    const lastId = publications[publications.length - 1].id
+    const newPublication: PublicationInterface = {
+      id: lastId,
+      title,
+      previewText,
+      mainText,
+      author: {
+        nickname: UserModel.currentUser?.nickname ?? '',
+        id: UserModel.currentUser?.id ?? '',
+      },
+      rating: {
+        dislikes: '0',
+        likes: '0',
+      },
+      date: String(Date.now),
+      comments: [],
+    }
+
+    return this.publications.push(newPublication)
   }
 
   search(searchText: string) {
