@@ -7,7 +7,10 @@ export interface UserInterface {
   password: string,
   publications?: PublicationInterface[],
   shortAbout?: string,
-  rating?: string,
+  rating?: {
+    dislikes: string,
+    likes: string,
+  },
   numberOfSubscriptions?: number,
   numberOfSubscribers?: number,
 }

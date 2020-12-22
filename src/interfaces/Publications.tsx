@@ -18,11 +18,12 @@ export interface PublicationInterface {
     id: string | number,
     nickname: string,
   },
+  date: string,
   previewText: string,
   mainText: string,
   rating: {
     dislikes: string,
     likes: string,
   }
-  comments?: CommentInterface[]
+  comments: CommentInterface[]
 }

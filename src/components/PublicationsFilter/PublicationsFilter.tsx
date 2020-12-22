@@ -1,23 +1,46 @@
-import React, { FC, useState, useEffect } from 'react'
+import React, {
+  FC, useState, useCallback, useEffect,
+} from 'react'
+import { observer } from 'mobx-react-lite'
 
 import { Input } from '..'
+import PublicationsModel from '../../models/PublicationsModel'
 
 import { Container, FilterLink, FilterLinks } from './PublicationsFilterStyle'
 
-const PublicationsFilter: FC = () => {
-  const [activeFilter, setActiveFilter] = useState('mostDiscussed')
+type Props = {
+  onSearch: any,
+}
+
+const PublicationsFilter: FC<Props> = ({ onSearch }: Props) => {
+  const [activeSort, setActiveSort] = useState('best')
+
+  const changeSort = useCallback(() => {
+    PublicationsModel.changeSortType(activeSort)
+  }, [activeSort])
+
+  useEffect(() => {
+    changeSort()
+  }, [changeSort])
 
   return (
     <Container>
-      <Input withoutErrors width="400px" placeholder="Search" name="search" />
+      <Input
+        withoutErrors
+        width="400px"
+        placeholder="Search"
+        name="search"
+        value={searchText}
+        onChange={e => onSearch(e.target.value)}
+      />
       <FilterLinks>
-        <FilterLink active={activeFilter === 'mostDiscussed'} onClick={() => setActiveFilter('mostDiscussed')}>
+        <FilterLink active={activeSort === 'mostDiscussed'} onClick={() => setActiveSort('mostDiscussed')}>
           Most discussed
         </FilterLink>
-        <FilterLink active={activeFilter === 'best'} onClick={() => setActiveFilter('best')}>
+        <FilterLink active={activeSort === 'best'} onClick={() => setActiveSort('best')}>
           Best
         </FilterLink>
-        <FilterLink active={activeFilter === 'worst'} onClick={() => setActiveFilter('worst')}>
+        <FilterLink active={activeSort === 'worst'} onClick={() => setActiveSort('worst')}>
           Worst
         </FilterLink>
       </FilterLinks>
@@ -26,4 +49,4 @@ const PublicationsFilter: FC = () => {
   )
 }
 
-export default PublicationsFilter
+export default observer(PublicationsFilter)

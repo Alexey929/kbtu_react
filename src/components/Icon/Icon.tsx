@@ -7,7 +7,7 @@ type Props = {
   fontColor?: string,
   iconColor?: string,
   iconSize?: string,
-  text?: string,
+  text?: string | number,
   margin?: string,
   icon: Element | ReactNode,
   onClick?: () => void,

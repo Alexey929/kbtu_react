@@ -20,21 +20,27 @@ const Profile: FC = () => {
       <Text size="2xl" weight="bold">{UserModel.currentUser?.nickname}</Text>
       <Statistics>
         <StatisticCard
-          label="My subscriptions"
+          label="Subscriptions"
           valueType="primary"
           value={UserModel.currentUser?.numberOfSubscriptions}
           withoutAction
         />
         <StatisticCard
-          label="My subscribers"
+          label="Subscribers"
           valueType="primary"
           value={UserModel.currentUser?.numberOfSubscribers}
           withoutAction
         />
         <StatisticCard
-          label="My rating"
+          label="Likes"
           valueType="success"
-          value={UserModel.currentUser?.rating}
+          value={UserModel.currentUser?.rating?.likes}
+          withoutAction
+        />
+        <StatisticCard
+          label="Dislikes"
+          valueType="danger"
+          value={UserModel.currentUser?.rating?.dislikes}
           withoutAction
         />
       </Statistics>

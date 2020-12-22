@@ -1,6 +1,8 @@
 import React, { FC } from 'react'
+import { observer } from 'mobx-react-lite'
 
 import { Text, PublicationsFilter, PublicationPreview } from '../../components'
+import PublicationsModel from '../../models/PublicationsModel'
 
 import { Container } from './PublicationsStyle'
 
@@ -8,13 +10,9 @@ const Publications: FC = () => (
   <Container>
     <Text size="xl" weight="bold">Publications</Text>
     <PublicationsFilter />
-    <PublicationPreview />
-    <PublicationPreview />
-    <PublicationPreview />
-    <PublicationPreview />
-    <PublicationPreview />
-    <PublicationPreview />
+    {PublicationsModel.publications.map(publication => <PublicationPreview publication={publication} />)}
   </Container>
+
 )
 
-export default Publications
+export default observer(Publications)
